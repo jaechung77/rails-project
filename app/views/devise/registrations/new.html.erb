@@ -1,6 +1,5 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="container">
+
       <div class="row justify-content-md-center">
         <div class="col-md-4 ">
           <fieldset class="border p-2">
@@ -20,13 +19,13 @@
               <%= f.label :password_confirmation%>
               <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
             </div>
-            <div class = "col text-center">
+            <div class = "action col text-center">
             <%= f.submit "Sign up", class: "btn btn-primary" %>
             </div>
+            <%= render "devise/shared/links" %>
           </fieldset>
         </div>
-      </div>
     </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
