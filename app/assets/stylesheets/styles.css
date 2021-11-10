@@ -11508,3 +11508,17 @@ html {
   background-color: #1a252f;
 }
 
+/* Modal */
+body,
+.modal-open .page-container,
+.modal-open .page-container .navbar-fixed-top,
+.modal-open .modal-container {
+	overflow-y: scroll;
+}
+
+@media (max-width: 979px) {
+	.modal-open .page-container .navbar-fixed-top{
+		overflow-y: visible;
+	}
+}
+

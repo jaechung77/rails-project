@@ -1,6 +1,6 @@
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="row justify-content-md-center">
-    <div class="col-md-4 ">
+    <div class="col-md-4 pb-2 ">
       <fieldset class="border p-2">
         <legend  class="float-none w-auto">Log in</legend>
         <% flash.each do |key, value| %>
@@ -8,13 +8,13 @@
         <% end %>  
         <div class="form-group">
           <%= f.input :email,
-                      required: false,
+                      required: true,
                       autofocus: true,
                       input_html: { autocomplete: "email", class: "form-control" } %>
           <%= f.input :password,
-                      required: false,
+                      required: true,
                       class: "form-control",
-                      input_html: { autocomplete: "current-password", class: "form-control"  } %>
+                      input_html: { class: "form-control"  } %>
           <%= f.input :remember_me, as: :boolean , input_html: { class: "form-check-input" }  if devise_mapping.rememberable? %>
         </div>
 

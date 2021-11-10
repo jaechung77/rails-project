@@ -1,29 +1,31 @@
-<h3 class="text-center">Contact Us</h3>
-<div class="form_container" >
-    <div class="form_wrap">
+<div class="row justify-content-md-center" >
+    <div class="col-md-4">
         <form>
-            <div class="form-group form_item">
-                <label>Your Email</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-            </div>
-            <div class="form-group form_item">
-                <label>Select Title</label>
-                <select class="form-control" id="exampleFormControlSelect1" placeholder="Select one">
-                    <option value="" disabled selected hidden>Choose a title</option>
-                    <option>Admission Enquiry</option>
-                    <option>HECS Enquiry</option>
-                    <option>Dormitory Enquiry</option>
-                    <option>Major Enquiry</option>
-                    <option>Others</option>
-                </select>
-            </div>
-            <div class="form-group form_item">
-                <label>Content</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Your Enquiry"></textarea>
-            </div>
-            <div class="form-group form_item">
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </div>
+            <fieldset class="border p-2">
+            <legend  class="float-none w-auto">Contact Us</legend>
+                <div class="form-group pb-2">
+                    <label>Your Email</label>
+                    <input type="email" class="form-control" placeholder="name@example.com">
+                </div>
+                <div class="form-group pb-2">
+                    <label>Select Title</label>
+                    <select class="form-control" placeholder="Select one">
+                        <option value="" disabled selected hidden>Choose a title</option>
+                        <option>Admission Enquiry</option>
+                        <option>HECS Enquiry</option>
+                        <option>Dormitory Enquiry</option>
+                        <option>Major Enquiry</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+                <div class="form-group pb-2">
+                    <label>Content</label>
+                    <textarea class="form-control" rows="10" placeholder="Your Enquiry"></textarea>
+                </div>
+                <div class="form-group text-center pd-2">
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                </div>
+            </fieldset>
         </form>
     </div>
 </div>
