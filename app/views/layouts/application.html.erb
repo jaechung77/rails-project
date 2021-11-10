@@ -29,12 +29,14 @@
                         <li class="nav-item mx-0 mx-lg-1"><%= link_to "Subject", contact_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
                         <li class="nav-item mx-0 mx-lg-1"><%= link_to "Enrolment", contact_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
                         <li class="nav-item mx-0 mx-lg-1"><%= link_to "Contact", contact_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %>
+                        <li class="nav-item mx-0 mx-lg-1"><%= link_to "Sign In", new_user_session_path, class: 'nav-link py-3 px-0 px-lg-3 rounded text-warning' %>
+                        <li class="nav-item mx-0 mx-lg-1"><%= link_to "Register", new_user_registration_path, class: 'nav-link py-3 px-0 px-lg-3 rounded text-danger' %>
                     </ul>
                 </div>
             </div>
         </nav>
 
-            <%= image_tag "homebanner.jpg", style: 'height: auto; width:100%;' %>
+        <%= image_tag "homebanner.jpg", style: 'height: auto; width:100%;' %>
 
 
           <%= yield %>

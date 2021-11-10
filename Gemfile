@@ -20,6 +20,12 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem 'activerecord-session_store'
+
 
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
