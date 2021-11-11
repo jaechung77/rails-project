@@ -13,6 +13,7 @@ class EnrolmentsController < ApplicationController
   # GET /enrolments/new
   def new
     @enrolment = Enrolment.new
+ 
   end
 
   # GET /enrolments/1/edit
@@ -64,6 +65,15 @@ class EnrolmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def enrolment_params
-      params.require(:enrolment).permit(:student_id, :subject_id)
+      params.require(:enrolment).permit(
+                                        :user_id, 
+                                        :teaching_id,
+                                        student_attributes: [
+                                          :first_name, 
+                                          :last_name,
+                                          :mobile,
+                                          :user_id
+                                        ]
+                                      )
     end
 end

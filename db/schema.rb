@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_11_032424) do
+ActiveRecord::Schema.define(version: 2021_11_11_183550) do
 
   create_table "enrolments", force: :cascade do |t|
-    t.integer "student_id"
-    t.integer "subject_id"
+    t.integer "user_id"
+    t.integer "teaching_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
