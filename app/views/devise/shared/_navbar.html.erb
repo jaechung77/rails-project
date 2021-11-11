@@ -10,7 +10,7 @@
             <ul class="navbar-nav ms-auto">
                 <span class="text-info"> Hi <%= current_user.email.downcase %> </span>
                 <li class="nav-item mx-0 mx-lg-1"><%= link_to "Home", home_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
-                <li class="nav-item mx-0 mx-lg-1"><%= link_to "Subject", contact_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
+                <li class="nav-item mx-0 mx-lg-1"><%= link_to "Subject", subjects_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
                 <li class="nav-item mx-0 mx-lg-1"><%= link_to "Enrolment", contact_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
                 <li class="nav-item mx-0 mx-lg-1"><%= link_to "Contact", contact_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
                 <li class="nav-item mx-0 mx-lg-1"><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'nav-link py-3 px-0 px-lg-3 rounded text-warning' %></li>
@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item mx-0 mx-lg-1"><%= link_to "Home", home_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
-                <li class="nav-item mx-0 mx-lg-1"><%= link_to "Subject", contact_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
+                <li class="nav-item mx-0 mx-lg-1"><%= link_to "Subject", subjects_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
                 <li class="nav-item mx-0 mx-lg-1"><%= link_to "Enrolment", contact_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
                 <li class="nav-item mx-0 mx-lg-1"><%= link_to "Contact", contact_path, class: 'nav-link py-3 px-0 px-lg-3 rounded' %></li>
                 <li class="nav-item mx-0 mx-lg-1"><%= link_to "Sign In", new_user_session_path, class: 'nav-link py-3 px-0 px-lg-3 rounded text-warning' %></li>
