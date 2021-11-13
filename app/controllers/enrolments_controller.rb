@@ -13,7 +13,7 @@ class EnrolmentsController < ApplicationController
   # GET /enrolments/new
   def new
     @enrolment = Enrolment.new
- 
+    @teachings = Teaching.all
   end
 
   # GET /enrolments/1/edit
@@ -23,7 +23,7 @@ class EnrolmentsController < ApplicationController
   # POST /enrolments or /enrolments.json
   def create
     @enrolment = Enrolment.new(enrolment_params)
-
+    binding.pry
     respond_to do |format|
       if @enrolment.save
         format.html { redirect_to @enrolment, notice: "Enrolment was successfully created." }
@@ -66,14 +66,14 @@ class EnrolmentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def enrolment_params
       params.require(:enrolment).permit(
-                                        :user_id, 
+                                        :student_id,
                                         :teaching_id,
-                                        student_attributes: [
-                                          :first_name, 
+                                        user_attributes: [
+                                          :first_name,
                                           :last_name,
-                                          :mobile,
-                                          :user_id
+                                          :mobile
                                         ]
                                       )
     end
 end
+

@@ -1,6 +1,5 @@
 class Student < ApplicationRecord
-    belongs_to :user
     has_many :enrolments
     has_many :teachings, through: :enrolments
-    
+    belongs_to :user
 end

@@ -8,8 +8,8 @@
         <div class="card-body">
             <h3 class="card_title"><%= @subject.name %></h3>
             <p class="card-subtitle ">Teachers</p>
-            <% @subject.teachings.each do |teaching| %>
-              <p class="card-text text-muted small"><%= teaching.teacher.full_name %> </p>
+            <% @subject.teachers.each do |teacher| %>
+              <p class="card-text text-muted small"><%= teacher.full_name %> </p>
             <% end %>
             <p class="card-subtitle">Description</p>
             <p class="card-text text-muted small"><%= @subject.description %></p>

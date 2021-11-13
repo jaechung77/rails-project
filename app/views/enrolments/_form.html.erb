@@ -1,28 +1,38 @@
 
-<%= simple_form_for(@enrolment) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  
+<%= form_for(@enrolment) do |f| %>
   <div class="row justify-content-md-center">
     <div class="col-md-4 ">
       <fieldset class="border p-2">
         <legend  class="float-none w-auto">Enrolment</legend>
-        <div class = "form-group">
-        <% binding.pry %>
-          <%= f.input :student%>
-          <%= f.input :first_name, label: 'First Name' %>
-          <%= f.input :last_name, label: 'Last Name' %>
-          <%= f.input :modile, label: 'Mobile Number' %>
+        
+        <%# Student Input %>
+        <%= f.fields_for :user do |u| %>
+          <div class = "form-group  pb-2">
+            <%= u.label :first_name %>
+            <%= u.text_field :first_name,  class: "form-control" %>
+          </div>
+          <div class = "form-group  pb-2">
+            <%= u.label :last_name %>
+            <%= u.text_field :last_name,  class: "form-control" %>
+          </div>
+          <div class = "form-group  pb-2">
+            <%= u.label :mobile %>
+            <%= u.text_field :mobile,  class: "form-control" %>
+          </div>
+        <% end %> 
 
+        <%# Enrolment Input %>
+        <div class = "form-group pb-2">
+          <%= f.label :student_id %>
+          <%= f.text_field :student_id, class: "form-control" %>
         </div>
-
-        <div class="form-actions">
-          <%= f.button :submit %>
-        </div>  
+        <div class = "form-group  pb-2">
+          <%= f.select :teaching_id, Teaching.all.map { |teaching| ["#{teaching.subject_info} ", teaching.id] } %>	
+        </div>
+        <div class="form-actions text-center">
+          <%= f.submit "Enrol", class: "btn btn-primary" %>
+        </div>
       </fieldset>
     </div>
   </div>
 <% end %>
-
-
-          <%# <% f.collection_check_boxes :teaching_ids, Teaching.all, :id, :name %> 

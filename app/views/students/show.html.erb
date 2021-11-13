@@ -1,19 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @student.first_name %>
-</p>
+<div class="row justify-content-md-center">
+  <div class="col-md-4 ">
+    <fieldset class="border p-2">
+      <legend  class="float-none w-auto">Your Information</legend>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @student.last_name %>
-</p>
+      <div class = "form-group  pb-2">
+        <strong>First name:</strong>
+      <%= @student.first_name %>
+      </div>
 
-<p>
-  <strong>Mobile:</strong>
-  <%= @student.mobile %>
-</p>
+      <div class = "form-group  pb-2">
+        <strong>Last name:</strong>
+      <%= @student.last_name %>
+      </div>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+      <div class = "form-group  pb-2">
+        <strong>Mobile:</strong>
+      <%= @student.mobile %>
+      </div>
+
+      <div class = "form-group  pb-2 text-center">
+        <%= link_to 'Edit', edit_student_path(@student), class: "btn btn-primary text-center" %> |
+        <%= link_to 'Back', students_path, class: "btn btn-primary text-center" %>
+      </div>
+    </fieldset>
+  </div>
+</div>
