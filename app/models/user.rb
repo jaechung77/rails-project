@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
         :omniauthable, omniauth_providers: [:github, :google_oauth2]
 
-  has_one :user
+  belongs_to :student
   
 
   def self.create_from_provider_data(provider_data)

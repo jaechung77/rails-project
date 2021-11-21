@@ -3,17 +3,23 @@ class EnrolmentsController < ApplicationController
 
   # GET /enrolments or /enrolments.json
   def index
-    @enrolments = Enrolment.all
+    @enrolments = Enrolment.all.where("student_id=?", current_user.id)
   end
 
   # GET /enrolments/1 or /enrolments/1.json
   def show
+
   end
 
   # GET /enrolments/new
   def new
+    if !user_signed_in?
+      redirect_to new_user_session_path
+    end  
     @enrolment = Enrolment.new
     @teachings = Teaching.all
+    @subjects = Subject.all
+    @student = Student.find(current_user.id)
   end
 
   # GET /enrolments/1/edit
@@ -23,16 +29,14 @@ class EnrolmentsController < ApplicationController
   # POST /enrolments or /enrolments.json
   def create
     @enrolment = Enrolment.new(enrolment_params)
-    binding.pry
-    respond_to do |format|
+
+
+    @enrolment.student_id = current_user.id
       if @enrolment.save
-        format.html { redirect_to @enrolment, notice: "Enrolment was successfully created." }
-        format.json { render :show, status: :created, location: @enrolment }
+          redirect_to enrolments_path
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @enrolment.errors, status: :unprocessable_entity }
+          render :new
       end
-    end
   end
 
   # PATCH/PUT /enrolments/1 or /enrolments/1.json
@@ -67,12 +71,7 @@ class EnrolmentsController < ApplicationController
     def enrolment_params
       params.require(:enrolment).permit(
                                         :student_id,
-                                        :teaching_id,
-                                        user_attributes: [
-                                          :first_name,
-                                          :last_name,
-                                          :mobile
-                                        ]
+                                        :teaching_ids => [] 
                                       )
     end
 end

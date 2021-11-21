@@ -12,7 +12,12 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
-    @student = Student.new
+
+    if Student.where("user_id=?", current_user.id).size > 0
+      redirect_to home_path
+    else  
+      @student = Student.new
+    end  
   end
 
   # GET /students/1/edit
@@ -23,8 +28,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     @student.user_id = User.where('lower(email) = ?', current_user.email.downcase).first.id
- 
-    binding.pry
+
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student, notice: "Succefully registered. You can enrol now" }

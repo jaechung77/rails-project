@@ -7,7 +7,12 @@
 
 <p>
   <strong>Subject:</strong>
-  <%= @enrolment.subject_id %>
+  <%= @enrolment.teaching.subject.name %>
+</p>
+
+<p>
+  <strong>Teacher:</strong>
+  <%= @enrolment.teaching.teacher.full_name %>
 </p>
 
 <%= link_to 'Edit', edit_enrolment_path(@enrolment) %> |

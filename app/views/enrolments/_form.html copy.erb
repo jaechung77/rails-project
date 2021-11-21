@@ -1,5 +1,5 @@
 
-<%= form_for([@student, @enrolment]) do |f| %>
+<%= form_for(@enrolment) do |f| %>
   <div class="row justify-content-md-center">
     <div class="col-md-4 ">
       <fieldset class="border p-2">
@@ -9,13 +9,7 @@
         <%# Enrolment Input %>
 
         <div class = "form-group  pb-2">
-        <% Teaching.all.map do |teaching|   %>
-            <%= check_box_tag "student[teaching_ids][]", teaching.id %>
-            <%= teaching.subject_info %><br/>
-        <% end %>
-
-
-
+          <%= f.select :teaching_id, Teaching.all.map { |teaching| ["#{teaching.subject_info} ", teaching.id] } %>	
         </div>
         <div class="form-actions text-center">
           <%= f.submit "Enrol", class: "btn btn-primary" %>
