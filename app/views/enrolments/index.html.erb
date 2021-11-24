@@ -1,32 +1,30 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Enrolments</h1>
   <div class="container">
-    <table class="table table-sm table-striped table-bordered table-hover">
-      <thead>
-        <tr class="d-flex">
-          <th class="col-3">Student</th>
-          <th class="col-3">Subject</th>
-          <th class="col-3">Teacher</th>
-          <th class="col-3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @enrolments.each do |enrolment| %>
+    <fieldset class="border p-2">
+      <legend  class="float-none w-auto">Your current enrolment</legend>
+      <table class="table table-sm table-striped table-bordered table-hover">
+        <thead>
           <tr class="d-flex">
-            <td class="col-3"><%= enrolment.student_id %></td>
-            <td class="col-3"><%= enrolment.teaching.subject.name %></td>
-            <td class="col-3"><%= enrolment.teaching.teacher.full_name %></td>
-            <td class="col-3">
-                <%= link_to 'Show', enrolment, class: 'btn btn-primary' %>
-                <%= link_to 'Edit', edit_enrolment_path(enrolment),  class: 'btn btn-info' %>
-                <%= link_to 'Destroy', enrolment, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
-            </td>
+            <th class="col-3 text-center">Student ID</th>
+            <th class="col-3 text-center">Subject</th>
+            <th class="col-3 text-center">Teacher</th>
+            <th class="col-3 text-center">Withdraw</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @enrolments.each do |enrolment| %>
+            <tr class="d-flex">
+              <td class="col-3"><%= enrolment.student_id %></td>
+              <td class="col-3"><%= enrolment.teaching.subject.name %></td>
+              <td class="col-3"><%= enrolment.teaching.teacher.full_name %></td>
+              <td class="col-3 text-center">
+                  <%= link_to 'Withdraw', enrolment, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </fieldset>
   </div>
 <br>
 

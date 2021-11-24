@@ -17,9 +17,8 @@ class EnrolmentsController < ApplicationController
       redirect_to new_user_session_path
     end  
     @enrolment = Enrolment.new
-    @teachings = Teaching.all
+    @teachings = Teaching.where.not(id: Enrolment.joins(:teaching).select(:teaching_id).where("student_id=?", current_user.id))
     @subjects = Subject.all
-    @student = Student.find(current_user.id)
   end
 
   # GET /enrolments/1/edit
@@ -28,15 +27,17 @@ class EnrolmentsController < ApplicationController
 
   # POST /enrolments or /enrolments.json
   def create
-    @enrolment = Enrolment.new(enrolment_params)
+    params[:enrolment][:teaching_ids].each do |teaching_id|
+      @enrolment = Enrolment.new
+      @enrolment.student_id = current_user.id
+      @enrolment.teaching_id = teaching_id
+      @enrolment.save
+    end  
 
+  redirect_to student_enrolments_path(current_user.id)
 
-    @enrolment.student_id = current_user.id
-      if @enrolment.save
-          redirect_to enrolments_path
-      else
-          render :new
-      end
+  # render :new
+
   end
 
   # PATCH/PUT /enrolments/1 or /enrolments/1.json
@@ -56,7 +57,7 @@ class EnrolmentsController < ApplicationController
   def destroy
     @enrolment.destroy
     respond_to do |format|
-      format.html { redirect_to enrolments_url, notice: "Enrolment was successfully destroyed." }
+      format.html { redirect_to student_enrolments_path(current_user.id), notice: "Enrolment was successfully destroyed." }
       format.json { head :no_content }
     end
   end

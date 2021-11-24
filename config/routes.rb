@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :subjects
   resources :enrolments
   resources :students do
-    resources :enrolments
+    resources :enrolments, only: [:show, :index, :new, :delete]
   end
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

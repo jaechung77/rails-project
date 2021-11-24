@@ -1,26 +1,24 @@
 
-<%= form_for([@student, @enrolment]) do |f| %>
-  <div class="row justify-content-md-center">
-    <div class="col-md-4 ">
-      <fieldset class="border p-2">
-        <legend  class="float-none w-auto">Enrolment</legend>
-
-
-        <%# Enrolment Input %>
-
-        <div class = "form-group  pb-2">
-        <% Teaching.all.map do |teaching|   %>
-            <%= check_box_tag "student[teaching_ids][]", teaching.id %>
-            <%= teaching.subject_info %><br/>
-        <% end %>
-
-
-
+<%= form_for(@enrolment) do |f| %>
+  <div class="container">
+    <fieldset class="border p-2">
+      <legend  class="float-none w-auto">Enrol for the next semester!!</legend>
+      <table class="table table-sm table-striped table-bordered table-hover">
+        <div class="row justify-content-md-center">
+          <div class="col-md-4 ">
+            <tbody>
+              <% @teachings.map do |teaching|   %>
+                <tr class="d-flex">
+                  <td class="col-3"><%= check_box_tag "enrolment[teaching_ids][]", teaching.id %></td>
+                  <td class="col-9"><%= teaching.subject_info %></td>
+                </tr>
+              <% end %>
+                <tr class="d-flex">
+                  <td class="col-12 text-center"><%= f.submit "Enrol", class: "btn btn-primary" %>
+                </tr>
+            </tbody>
+          </div>
         </div>
-        <div class="form-actions text-center">
-          <%= f.submit "Enrol", class: "btn btn-primary" %>
-        </div>
-      </fieldset>
-    </div>
-  </div>
+      </table>
+    </fieldset>  
 <% end %>
