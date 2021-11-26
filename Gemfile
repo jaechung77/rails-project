@@ -16,8 +16,8 @@ gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
-gem 'bootstrap-sass'
-gem 'simple_form'
+
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 
 gem 'omniauth'

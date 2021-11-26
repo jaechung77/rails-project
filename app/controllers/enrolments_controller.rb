@@ -61,7 +61,7 @@ class EnrolmentsController < ApplicationController
   def destroy
     @enrolment.destroy
     respond_to do |format|
-      format.html { redirect_to student_enrolments_path(current_user.id), notice: "Enrolment was successfully destroyed." }
+      format.html { redirect_to student_enrolments_path(Student.find_by("user_id=?", current_user.id).id), notice: "Enrolment was successfully destroyed." }
       format.json { head :no_content }
     end
   end
