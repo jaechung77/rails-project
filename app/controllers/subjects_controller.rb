@@ -13,6 +13,10 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   def new
     @subject = Subject.new
+    @subject.teachings.build
+    @subject.teachings.each do |t|
+      t.build_teacher
+    end
   end
 
   # GET /subjects/1/edit
@@ -64,6 +68,6 @@ class SubjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def subject_params
-      params.require(:subject).permit(:name)
+      params.require(:subject).permit(:name, teachings_attributes: [ :subject_id, :teacher_id])
     end
 end

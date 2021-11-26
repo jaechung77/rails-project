@@ -3,7 +3,11 @@ class EnrolmentsController < ApplicationController
 
   # GET /enrolments or /enrolments.json
   def index
-    @enrolments = Enrolment.all.where("student_id=?", current_user.id)
+    if helpers.is_admin?
+      @enrolments = Enrolment.all    
+    else  
+      @enrolments = Enrolment.all.where("student_id=?", params[:student_id])
+    end  
   end
 
   # GET /enrolments/1 or /enrolments/1.json
@@ -17,7 +21,7 @@ class EnrolmentsController < ApplicationController
       redirect_to new_user_session_path
     end  
     @enrolment = Enrolment.new
-    @teachings = Teaching.where.not(id: Enrolment.joins(:teaching).select(:teaching_id).where("student_id=?", current_user.id))
+    @teachings = Teaching.where.not(id: Enrolment.joins(:teaching).select(:teaching_id).where("student_id=?", params[:student_id]))
     @subjects = Subject.all
   end
 
@@ -29,12 +33,12 @@ class EnrolmentsController < ApplicationController
   def create
     params[:enrolment][:teaching_ids].each do |teaching_id|
       @enrolment = Enrolment.new
-      @enrolment.student_id = current_user.id
+      @enrolment.student_id = Student.find_by("user_id=?", current_user.id).id
       @enrolment.teaching_id = teaching_id
       @enrolment.save
     end  
 
-  redirect_to student_enrolments_path(current_user.id)
+  redirect_to student_enrolments_path @enrolment.student_id
 
   # render :new
 

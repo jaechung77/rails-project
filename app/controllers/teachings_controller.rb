@@ -13,6 +13,9 @@ class TeachingsController < ApplicationController
   # GET /teachings/new
   def new
     @teaching = Teaching.new
+    @teaching.build_teacher
+    @teaching.build_subject
+
   end
 
   # GET /teachings/1/edit
@@ -64,6 +67,6 @@ class TeachingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def teaching_params
-      params.require(:teaching).permit(:subject_id, :teacher_id)
+      params.require(:teaching).permit(:teacher_attributes => [:first_name, :last_name, :major], :subject_attributes => [:name, :description, :image])
     end
 end

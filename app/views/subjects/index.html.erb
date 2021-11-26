@@ -11,7 +11,7 @@
       <div class= "col-md-4 d-flex align-items-stretch pb-3">
         <div class="card ">
             <%= link_to subject, class: "text-decoration-none" do %>
-              <%= image_tag subject.name, class: "w-100" %>
+              <%= image_tag subject.image.url, class: "w-100"  if subject.image? %>
                 <div class="card-body">
                     <h3 class="card_title"><%= subject.name %></h3>
                     <p class="card-subtitle ">Teachers</p>

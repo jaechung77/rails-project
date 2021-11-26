@@ -1,14 +1,38 @@
-
-<%= simple_form_for(@teaching) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :subject_id %>
-    <%= f.input :teacher_id %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+<%= form_for @teaching, html: { multipart:  true } do |f| %>
+  <div class="container">
+    <fieldset class="border p-2">
+      <legend  class="float-none w-auto">Add Subject</legend>
+      <table class="table table-sm table-striped table-bordered table-hover">
+        <div class="row justify-content-md-center">
+          <div class="col-md-4 ">
+            <tbody>
+                <%= f.fields_for :subject do |subject_builder| %>
+                <tr class="d-flex">
+                  <td class="col-2"><%= subject_builder.label "Subject Name" %></td>
+                  <td class="col-2"><%= subject_builder.text_field :name  %></td>
+                  <td class="col-2"><%= subject_builder.label "Subject Description" %></td>
+                  <td class="col-2"><%= subject_builder.text_field :description  %></td>
+                  <td class="col-2"><%= subject_builder.label "Image File" %></td>
+                  <td class="col-2"><%= subject_builder.file_field :image  %></td>
+                </tr>                
+                <% end %>
+                <%= f.fields_for :teacher do |teacher_builder| %>
+                    <tr class="d-flex">
+                      <td class="col-2"><%= teacher_builder.label "Teacher First Name" %></td>
+                      <td class="col-2"><%= teacher_builder.text_field :first_name  %></td>
+                      <td class="col-2"><%= teacher_builder.label "Teacher Last Name" %></td>
+                      <td class="col-2"><%= teacher_builder.text_field :last_name  %></td>
+                      <td class="col-2"><%= teacher_builder.label "Teacher's Major" %></td>
+                      <td class="col-2"><%= teacher_builder.text_field :major  %></td>
+                    </tr>
+                <% end %>
+                <tr class="d-flex">
+                  <td class="col-12 text-center"><%= f.submit "Add", class: "btn btn-primary" %></td>
+                </tr>
+            </tbody>
+          </div>
+        </div>
+      </table>
+    </fieldset>
   </div>
 <% end %>

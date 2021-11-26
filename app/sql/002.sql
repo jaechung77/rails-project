@@ -1,1 +1,2 @@
-select * from teachings;
+DELETE FROM students;
+

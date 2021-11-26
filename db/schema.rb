@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_112804) do
+ActiveRecord::Schema.define(version: 2021_11_26_081435) do
 
   create_table "enrolments", force: :cascade do |t|
     t.integer "student_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_112804) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
+    t.string "image"
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_112804) do
     t.string "first_name"
     t.string "last_name"
     t.string "mobile"
+    t.boolean "is_admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
