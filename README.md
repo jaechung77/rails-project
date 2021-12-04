@@ -1,19 +1,19 @@
 # Purpose
-This app is for students to register as a member and apply for courses. 
-Students can enroll classes and drop classes they have enrolled for. 
-The admin can register all subjects and drop any subjects requested by any student.
+This app is for students to register as a member and apply for courses.<br> 
+Students can enroll classes and withdraw classes they have enrolled for.<br>  
+The admin can register and drop subjects requested by students.<br> 
 
 ## ERD
 ![ERD](../main/ERD.JPG)
 
 
-## Gems used are Devise, OmniAuth, Pagenation, Faker and CarrierWave
+## Gems used: Devise, OmniAuth, Pagenation, Faker and CarrierWave
 
 ### Devise for Sign in, Sign out and Sign up
-Usage
-`rails g devise:install`
-`rails g devise user`
-`rails db:migrate`
+Usage<br> 
+`rails g devise:install`<br> 
+`rails g devise user`<br> 
+`rails db:migrate`<br> 
 #### make views
 rails g devise:views -v registrations confirmations sessions passwords
 
