@@ -4,7 +4,7 @@ Students can enroll classes and drop classes they have enrolled for.
 The admin can register all subjects and drop any subjects requested by any student.
 
 ## ERD
-![ERD](ERD.jpg)
+![ERD](../main/ERD.jpg)
 
 
 ## Gems used are Devise, OmniAuth, Pagenation, Faker and CarrierWave
