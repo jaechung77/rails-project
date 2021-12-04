@@ -17,7 +17,7 @@ The admin can register and drop subjects requested by students.<br>
 `rails g devise user`<br> 
 `rails db:migrate`<br> 
 #### make views
-rails g devise:views -v registrations confirmations sessions passwords
+`rails g devise:views -v registrations confirmations sessions passwords`
 
 ### OmniAuth for 3rd party authentication
 #### Installation for facebook, github and google
@@ -30,7 +30,7 @@ rails g devise:views -v registrations confirmations sessions passwords
 
 #### Store id and secret in safe location
 In shell, `EDITOR="code --wait" rails credentials:edit`
-it will open up XXXX.credentails.yml file
+It will open up XXXX.credentails.yml file
 Don't touch anything and just add
 ```
     google_client_id:
@@ -41,7 +41,7 @@ Don't touch anything and just add
 
 Then close the file then the file will be encrypted and saved<br>
 
-Config > initializers > divise.rb
+config > initializers > divise.rb
 ```
  config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id),
  Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'public_profile,email'
@@ -56,7 +56,7 @@ Make file config > initializers > session_store.rb
 Type 
 `Rails.application.config.session_store :active_record_store, key: '_devise-omniauth_session'`
 
-rails g migration update_users
+`rails g migration update_users`
 ```
 add_column(:users, :provider, :string, limit: 50, null: false, default: '')
 add_column(:users, :uid, :string, limit: 500, null: false, default: '')
@@ -94,7 +94,7 @@ end
 
 `rails g controller omniauth`
 
-in the controller
+In the controller
 ```
     def facebook
         @user = User.create_from_provider_data(request.env['omniauth.auth'])
@@ -146,14 +146,14 @@ Router
 `gem kaminari`<br>
 `rails g kaminari:views bootstrap4`<br>
 
-in view 
+In view 
 ```
 <div class="container pagination justify-content-center" >
   <%= paginate @subjects %>
 </div>
 ```
 
-in controller 
+In controller 
 ```
   def index
     @subjects = Subject.all.page(params[:page]).per(3)
@@ -161,7 +161,7 @@ in controller
 ```
 
 ### Faker for Fake data
-in seed.rb
+In seed.rb
 ```
 Faker::Lorem.paragraph(sentence_count: rand(7..10))
 Faker::Name.unique.name.split(' ')
@@ -173,14 +173,14 @@ Faker::Name.unique.name.split(' ')
 `rails g uploader image`<br>
 
 
-in the model you want to handle image
+In the model you want to handle image
 ```
 class Subject < ApplicationRecord
     mount_uploader :image, ImageUploader
 end
 ```
 
-in the view
+In the view
 ```
 <%= form_for @teaching, html: { multipart:  true } do |f| %>
 .....
@@ -188,8 +188,7 @@ in the view
 ```
 
 ### Nested Form used(write 3 tables in one form)
-Teachers   <-- Teaching --> Subjects<br>
-   M               1           M<br>
+Teachers(M)   <-- Teaching(1) --> Subjects(M)<br>
 
 Models
 ```
@@ -229,12 +228,6 @@ Views
     <%= f.fields_for :teacher do |teacher_builder| %>
 ```
 
-
-## To be
-More validation
-RSpec Test
-Student's Timetable
-Teacher's Timetable
 
 
 
