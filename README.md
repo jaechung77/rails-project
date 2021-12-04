@@ -1,7 +1,7 @@
 # Purpose
-This app is for students to register as a member and apply for courses.
-User can enroll classes and withdraw classes they have enrolled for.
-Admin can register and drop subjects requested by students.
+This app is for students to register as a member and apply for courses.<br/>
+User can enroll classes and withdraw classes they have enrolled for.<br/>
+Admin can register and drop subjects requested by students.<br/>
 
 ## ERD
 ![ERD](../main/ERD.JPG)
