@@ -20,6 +20,11 @@
                     <% end %>
                     <p class="card-subtitle">Description</p>
                     <p class="card-text text-muted small"><%= subject.description.truncate(80) %></p>
+                    <% if is_admin? %>
+                      <div class="text-center">
+                        <p><%= link_to 'Destroy', subject, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %></p>
+                      </div>
+                    <% end %>
                 </div>
             <% end %>
         </div>

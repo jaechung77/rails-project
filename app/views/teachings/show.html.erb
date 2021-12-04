@@ -2,12 +2,12 @@
 
 <p>
   <strong>Subject:</strong>
-  <%= @teaching.subject_id %>
+  <%= @teaching.subject.name %>
 </p>
 
 <p>
   <strong>Teacher:</strong>
-  <%= @teaching.teacher_id %>
+  <%= @teaching.teacher.full_name %>
 </p>
 
 <%= link_to 'Edit', edit_teaching_path(@teaching) %> |

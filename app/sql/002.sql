@@ -1,2 +1,2 @@
-DELETE FROM students;
+DELETE FROM subjects;
 

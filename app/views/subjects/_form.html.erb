@@ -9,16 +9,16 @@
             <tbody>
                 <tr class="d-flex">
                   <td class="col-3"><%= f.label "Subject Name" %></td>
-                  <td class="col-9"><%= f.text_field :name  %></td>
+                  <td class="col-9"><%= f.text_field :name, required: true  %></td>
                 </tr>
                 <%= f.fields_for :teachings do |teaching| %>
                   <%# <%= t.hidden_field  %>
                   <%= teaching.fields_for :teachers do |teacher| %>
                     <tr class="d-flex">
                       <td class="col-3"><%= teacher.label "Teacher First Name" %></td>
-                      <td class="col-3"><%= teacher.text_field :first_name  %></td>
+                      <td class="col-3"><%= teacher.text_field :first_name, required: true  %></td>
                       <td class="col-3"><%= teacher.label "Teacher Last Name" %></td>
-                      <td class="col-3"><%= teacher.text_field :last_name  %></td>
+                      <td class="col-3"><%= teacher.text_field :last_name, required: true  %></td>
                     </tr>
                   <% end %>
                 <% end %>

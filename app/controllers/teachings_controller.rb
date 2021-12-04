@@ -25,7 +25,6 @@ class TeachingsController < ApplicationController
   # POST /teachings or /teachings.json
   def create
     @teaching = Teaching.new(teaching_params)
-
     respond_to do |format|
       if @teaching.save
         format.html { redirect_to @teaching, notice: "Teaching was successfully created." }

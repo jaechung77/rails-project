@@ -9,20 +9,17 @@
     <!-- Google fonts--> %>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
     <body id="page-top">
         <!-- Navigation-->
-    <%= render "devise/shared/navbar" %>
+    <%= render "layouts/navbar" %>
 
         <%= image_tag "homebanner", style: 'height: auto; width:100%;' %>
-
-
-          <%= yield %>
-     
+        <%= yield %>
         <!-- Footer-->
         <footer class="footer text-center">
             <div class="container">
