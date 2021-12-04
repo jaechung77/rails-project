@@ -10,21 +10,25 @@ The admin can register and drop subjects requested by students.<br>
 ## Gems used: Devise, OmniAuth, Pagenation, Faker and CarrierWave
 
 ### Devise for Sign in, Sign out and Sign up
-Usage<br> 
-`rails g devise:install`<br> 
+#### Installation
+`gem 'omniauth'`<br> 
+`rails g devise:install`<br>
+#### Make User Model and Table, Migration<br> 
 `rails g devise user`<br> 
 `rails db:migrate`<br> 
 #### make views
 rails g devise:views -v registrations confirmations sessions passwords
 
 ### OmniAuth for 3rd party authentication
-`gem 'omniauth'`
-`gem 'omniauth-facebook'`
-`gem 'omniauth-github'`
-`gem 'omniauth-google-oauth2'`
-`gem 'activerecord-session_store'`
-`gem 'omniauth-rails_csrf_protection'`
+#### Installation for facebook, github and google
+`gem 'omniauth'`<br> 
+`gem 'omniauth-facebook'`<br> 
+`gem 'omniauth-github'`<br> 
+`gem 'omniauth-google-oauth2'`<br> 
+`gem 'activerecord-session_store'`<br> 
+`gem 'omniauth-rails_csrf_protection'`<br> 
 
+#### Store id and secret in safe location
 In shell, `EDITOR="code --wait" rails credentials:edit`
 it will open up XXXX.credentails.yml file
 Don't touch anything and just add
@@ -35,7 +39,7 @@ Don't touch anything and just add
     github_client_secret:
 ```
 
-Then close the file then the file will be encrypted and saved
+Then close the file then the file will be encrypted and saved<br>
 
 Config > initializers > divise.rb
 ```
@@ -47,7 +51,7 @@ Config > initializers > divise.rb
  Rails.application.credentials.dig(:google, :google_client_secret), scope: 'userinfo.email,userinfo.profile' 
 ```
 
- To activate activerecord-session_store
+To activate activerecord-session_store<br>
 Make file config > initializers > session_store.rb
 Type 
 `Rails.application.config.session_store :active_record_store, key: '_devise-omniauth_session'`
@@ -70,9 +74,9 @@ add_index :sessions, :session_id, unique: true
 add_index :sessions, :updated_at
 ```
 
-`rails db:drop`
-`rails db:create`
-`rails db:migrate`
+`rails db:drop`<br>
+`rails db:create`<br>
+`rails db:migrate`<br>
 
 User Model
 ```
@@ -139,8 +143,8 @@ Router
 ```
 
 ### Pagination for indexed page
-`gem kaminari`
-`rails g kaminari:views bootstrap4`
+`gem kaminari`<br>
+`rails g kaminari:views bootstrap4`<br>
 
 in view 
 ```
@@ -164,9 +168,9 @@ Faker::Name.unique.name.split(' ')
 ```
 
 ### CarrierWave for file and image upload
-`gem 'carrierwave'`
-`rails g uploader file`
-`rails g uploader image`
+`gem 'carrierwave'`<br>
+`rails g uploader file`<br>
+`rails g uploader image`<br>
 
 
 in the model you want to handle image
@@ -184,8 +188,8 @@ in the view
 ```
 
 ### Nested Form used(write 3 tables in one form)
-Teachers   <-- Teaching --> Subjects
-   M               1           M
+Teachers   <-- Teaching --> Subjects<br>
+   M               1           M<br>
 
 Models
 ```
